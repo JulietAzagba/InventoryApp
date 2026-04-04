@@ -1,5 +1,20 @@
+import json
+import boto3
+
+
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('Inventory')
+
 def lambda_handler(event, context):
+    item_id = event['pathParameters']['id']
+    
+    table.delete_item(
+        Key={
+            'item_id': item_id
+        }
+    )
+    
     return {
-        "statusCode": 200,
-        "body": "Placeholder"
+        'statusCode': 200,
+        'body': json.dumps({'message': 'Item deleted successfully'})
     }
