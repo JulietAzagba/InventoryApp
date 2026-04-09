@@ -1,0 +1,12 @@
+name: Deploy Lambda Functions
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulate Lambda Deploy
+        run: echo "Lambda deployment successful"
